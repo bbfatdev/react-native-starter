@@ -10,9 +10,19 @@ import { SettingsScreen } from './views/settings';
 
 const Tab = createBottomTabNavigator();
 
+const screenOptions = {
+  headerStyle: {
+    backgroundColor: '#3090C7',
+  },
+  headerTitleStyle: {
+    fontWeight: 'bold',
+    color: 'white',
+  },
+};
+
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={screenOptions}>
       <Tab.Screen
         options={{
           tabBarLabel: "主页",
