@@ -2,8 +2,23 @@ import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Avatar, ListItem, Icon } from 'react-native-elements'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function SettingsScreen() {
+import { TBDSereen } from './blank';
+import { ScreenOptions } from '../common/vars';
+
+const AboutStack = createNativeStackNavigator();
+
+function AboutStackScreen() {
+    return (
+        <AboutStack.Navigator screenOptions={ScreenOptions}>
+            <AboutStack.Screen name="About" component={AboutScreen} />
+            <AboutStack.Screen name="TBD" component={TBDSereen} />
+        </AboutStack.Navigator>
+    );
+}
+
+function AboutScreen({ navigation }) {
     return (
         <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#F0F8FF' }}>
             <LinearGradient
@@ -29,7 +44,7 @@ function SettingsScreen() {
                 <View style={{ flex: 1, backgroundColor: '#FFFFFF', margin: 10, borderWidth: 0, borderRadius: 5, padding: 10 }}>
                     {
                         list.map((item, i) => (
-                            <ListItem key={i} onPress={() => goSetting(item.route)} bottomDivider>
+                            <ListItem key={i} onPress={() => { navigation.navigate('TBD') }} bottomDivider>
                                 <Icon name={item.icon} />
                                 <ListItem.Content>
                                     <ListItem.Title>{item.title}</ListItem.Title>
@@ -77,8 +92,4 @@ const styles = StyleSheet.create({
 })
 
 
-function goSetting(route) {
-    console.log(route)
-}
-
-export { SettingsScreen };
+export { AboutStackScreen };

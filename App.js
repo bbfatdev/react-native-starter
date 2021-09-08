@@ -4,20 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { HomeScreen } from './views/home';
-import { SettingsScreen } from './views/settings';
+import { HomeStackScreen } from './views/home';
+import { AboutStackScreen } from './views/about';
 
 
 const Tab = createBottomTabNavigator();
 
 const screenOptions = {
-  headerStyle: {
-    backgroundColor: '#3090C7',
-  },
-  headerTitleStyle: {
-    fontWeight: 'bold',
-    color: 'white',
-  },
+  headerShown: false
 };
 
 function MyTabs() {
@@ -31,7 +25,7 @@ function MyTabs() {
           ),
           tabBarBadge: 3,
         }}
-        name="Home" component={HomeScreen} />
+        name="HomeStack" component={HomeStackScreen} />
       <Tab.Screen
         options={{
           tabBarLabel: "关于",
@@ -39,7 +33,7 @@ function MyTabs() {
             <MaterialCommunityIcons name="information" color={color} size={size} />
           ),
         }}
-        name="Settings" component={SettingsScreen} />
+        name="AboutStack" component={AboutStackScreen} />
     </Tab.Navigator>
   );
 }
