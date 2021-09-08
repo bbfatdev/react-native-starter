@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Avatar } from 'react-native-elements';
+import { Avatar, ListItem, Icon } from 'react-native-elements'
 
 function SettingsScreen() {
     return (
@@ -25,11 +25,37 @@ function SettingsScreen() {
                     </View>
                 </View>
             </LinearGradient>
-            <View style={[styles.card, { backgroundColor: '#FEFCFF', flex: 2 }, styles.shadowProp]}>
+            <View style={[styles.card, { backgroundColor: '#F0F2F3', flex: 2 }, styles.shadowProp]}>
+                <View style={{ flex: 1, backgroundColor: '#FFFFFF', margin: 10, borderWidth: 0, borderRadius: 5, padding: 10 }}>
+                    {
+                        list.map((item, i) => (
+                            <ListItem key={i} onPress={() => goSetting(item.route)} bottomDivider>
+                                <Icon name={item.icon} />
+                                <ListItem.Content>
+                                    <ListItem.Title>{item.title}</ListItem.Title>
+                                </ListItem.Content>
+                                <ListItem.Chevron />
+                            </ListItem>
+                        ))
+                    }
+                </View>
             </View>
         </View>
     );
 }
+
+const list = [
+    {
+        title: '版权声明',
+        icon: 'copyright',
+        route: ''
+    },
+    {
+        title: '设置',
+        icon: 'settings',
+        route: '/appsetting'    // go to setting page
+    },
+];
 
 const styles = StyleSheet.create({
     card: {
@@ -49,5 +75,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 })
+
+
+function goSetting(route) {
+    console.log(route)
+}
 
 export { SettingsScreen };
