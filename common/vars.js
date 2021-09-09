@@ -6,6 +6,8 @@ const ScreenOptions = {
         fontWeight: 'bold',
         color: 'white',
     },
+    headerTintColor: 'white',
+    headerBackTitleVisible: false
 };
 
 export { ScreenOptions };
