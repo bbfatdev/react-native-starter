@@ -1,47 +1,30 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { HomeStackScreen } from './views/home';
-import { AboutStackScreen } from './views/about';
+import { HomeTabScreen } from './views/home';
+import { TBDSereen } from './views/blank';
+import { ScreenOptions } from './common/vars';
+
+const Stack = createNativeStackNavigator();
 
 
-const Tab = createBottomTabNavigator();
-
-const screenOptions = {
-  headerShown: false
-};
-
-function MyTabs() {
+function MyStack() {
   return (
-    <Tab.Navigator screenOptions={screenOptions}>
-      <Tab.Screen
-        options={{
-          tabBarLabel: "主页",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
-          ),
-          tabBarBadge: 3,
-        }}
-        name="HomeStack" component={HomeStackScreen} />
-      <Tab.Screen
-        options={{
-          tabBarLabel: "关于",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="information" color={color} size={size} />
-          ),
-        }}
-        name="AboutStack" component={AboutStackScreen} />
-    </Tab.Navigator>
+    <Stack.Navigator screenOptions={ScreenOptions}>
+      <Stack.Screen
+        name="HomeTab" component={HomeTabScreen}
+        options={{ headerShown: false }} />
+      <Stack.Screen
+        name="TBD" component={TBDSereen} />
+    </Stack.Navigator>
   );
 }
 
 export default function App() {
   return (
     <NavigationContainer>
-      <MyTabs />
+      <MyStack />
     </NavigationContainer>
   );
 }

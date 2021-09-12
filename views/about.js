@@ -1,22 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Avatar, ListItem, Icon } from 'react-native-elements'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { TBDSereen } from './blank';
-import { ScreenOptions, GlbStyles } from '../common/vars';
+import { GlbStyles } from '../common/vars';
 
 const AboutStack = createNativeStackNavigator();
-
-function AboutStackScreen() {
-    return (
-        <AboutStack.Navigator screenOptions={ScreenOptions}>
-            <AboutStack.Screen name="About" component={AboutScreen} />
-            <AboutStack.Screen name="TBD" component={TBDSereen} />
-        </AboutStack.Navigator>
-    );
-}
 
 function AboutScreen({ navigation }) {
     return (
@@ -71,4 +61,4 @@ const list = [
 ];
 
 
-export { AboutStackScreen };
+export { AboutScreen };

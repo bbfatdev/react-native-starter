@@ -1,18 +1,34 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { ScreenOptions } from '../common/vars';
-import { TBDSereen } from './blank';
+import { AboutScreen } from './about';
 
-const HomeStack = createNativeStackNavigator();
+const HomeTabStack = createBottomTabNavigator();
 
-function HomeStackScreen() {
+function HomeTabScreen() {
     return (
-        <HomeStack.Navigator screenOptions={ScreenOptions}>
-            <HomeStack.Screen name="Home" component={HomeScreen} />
-            <HomeStack.Screen name="TBD" component={TBDSereen} />
-        </HomeStack.Navigator>
+        <HomeTabStack.Navigator screenOptions={ScreenOptions}>
+            <HomeTabStack.Screen
+                options={{
+                    tabBarLabel: "主页",
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="home" color={color} size={size} />
+                    ),
+                    tabBarBadge: 3,
+                }}
+                name="Home" component={HomeScreen} />
+            <HomeTabStack.Screen
+                options={{
+                    tabBarLabel: "关于",
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="information" color={color} size={size} />
+                    ),
+                }}
+                name="About" component={AboutScreen} />
+        </HomeTabStack.Navigator>
     );
 }
 
@@ -24,4 +40,4 @@ function HomeScreen({ navigation }) {
     );
 }
 
-export { HomeStackScreen };
+export { HomeTabScreen };
