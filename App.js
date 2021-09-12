@@ -9,6 +9,7 @@ import { ScreenOptions } from './common/vars';
 const Stack = createNativeStackNavigator();
 
 
+// 所有的页面都要加入到这个Stack中
 function MyStack() {
   return (
     <Stack.Navigator screenOptions={ScreenOptions}>

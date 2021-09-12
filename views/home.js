@@ -2,12 +2,15 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { ScreenOptions } from '../common/vars';
 import { AboutScreen } from './about';
 
 const HomeTabStack = createBottomTabNavigator();
 
+// Tab页面加入到这里
 function HomeTabScreen() {
     return (
         <HomeTabStack.Navigator screenOptions={ScreenOptions}>
@@ -35,7 +38,17 @@ function HomeTabScreen() {
 function HomeScreen({ navigation }) {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Home!</Text>
+            <Button titleStyle={{ marginLeft: 5 }}
+                icon={
+                    <Icon
+                        name="check-circle"
+                        size={15}
+                        color="white"
+                    />
+                }
+                title="Go to TBD"
+                onPress={() => navigation.navigate('TBD')}
+            />
         </View>
     );
 }
