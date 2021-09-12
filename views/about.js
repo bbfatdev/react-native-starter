@@ -5,7 +5,7 @@ import { Avatar, ListItem, Icon } from 'react-native-elements'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { TBDSereen } from './blank';
-import { ScreenOptions } from '../common/vars';
+import { ScreenOptions, GlbStyles } from '../common/vars';
 
 const AboutStack = createNativeStackNavigator();
 
@@ -20,19 +20,19 @@ function AboutStackScreen() {
 
 function AboutScreen({ navigation }) {
     return (
-        <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#F0F8FF' }}>
+        <View style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center', backgroundColor: '#E5E5E2' }}>
             <LinearGradient
                 colors={['#157DEC', '#3090C7', '#79BAEC']}
-                style={[{ backgroundColor: '#82CAFF', flex: 1 }, styles.card, styles.shadowProp]}>
-                <View style={[{ flex: 1 }, styles.alignBothCenter]}>
+                style={[{ backgroundColor: '#82CAFF', flex: 1 }, GlbStyles.card, GlbStyles.shadowProp]}>
+                <View style={[{ flex: 1 }, GlbStyles.alignBothCenter]}>
                     <Avatar
                         rounded
                         size="large"
                         source={require("../assets/images/logo.png")}
                     />
                 </View>
-                <View style={[{ flex: 1 }, styles.alignBothCenter]}>
-                    <View style={[{ flex: 1 }, styles.alignBothCenter]}>
+                <View style={[{ flex: 1 }, GlbStyles.alignBothCenter]}>
+                    <View style={[{ flex: 1 }, GlbStyles.alignBothCenter]}>
                         <Text style={{ fontSize: 20, color: 'white' }}>React Native Starter v1.0.1</Text>
                         <Text style={{ fontSize: 13, color: 'white' }}>By: 皓月当空</Text>
                     </View>
@@ -40,20 +40,18 @@ function AboutScreen({ navigation }) {
                     </View>
                 </View>
             </LinearGradient>
-            <View style={[styles.card, { backgroundColor: '#F0F2F3', flex: 2 }, styles.shadowProp]}>
-                <View style={{ flex: 1, backgroundColor: '#FFFFFF', margin: 10, borderWidth: 0, borderRadius: 5, padding: 10 }}>
-                    {
-                        list.map((item, i) => (
-                            <ListItem key={i} onPress={() => { navigation.navigate('TBD') }} bottomDivider>
-                                <Icon name={item.icon} />
-                                <ListItem.Content>
-                                    <ListItem.Title>{item.title}</ListItem.Title>
-                                </ListItem.Content>
-                                <ListItem.Chevron />
-                            </ListItem>
-                        ))
-                    }
-                </View>
+            <View style={[GlbStyles.card, { backgroundColor: '#FFFFFF', flex: 2, padding: 5 }]}>
+                {
+                    list.map((item, i) => (
+                        <ListItem key={i} onPress={() => { navigation.navigate('TBD') }} bottomDivider>
+                            <Icon name={item.icon} />
+                            <ListItem.Content>
+                                <ListItem.Title>{item.title}</ListItem.Title>
+                            </ListItem.Content>
+                            <ListItem.Chevron />
+                        </ListItem>
+                    ))
+                }
             </View>
         </View>
     );
@@ -71,25 +69,6 @@ const list = [
         route: '/appsetting'    // go to setting page
     },
 ];
-
-const styles = StyleSheet.create({
-    card: {
-        margin: 5,
-        borderRadius: 8,
-        height: 200,
-        width: '96%',
-    },
-    shadowProp: {
-        shadowColor: 'black',
-        shadowOffset: { width: 3, height: 3 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-    },
-    alignBothCenter: {
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-})
 
 
 export { AboutStackScreen };
